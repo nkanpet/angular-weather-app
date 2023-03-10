@@ -1,11 +1,41 @@
-
 <link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
 
 <div class="grid">
+  <div class="col">
+    <p-card>
+      <div class="grid">
+        <div class="col">
+          <h2>Weather of <span>{{ formatDate(activeItem?.Date, 'dddd') }}</span></h2>
+          <p>Min Temperature: {{ convertFahrenheitToCelsius(activeItem?.Temperature.Minimum.Value) }}°</p>
+          <p>Max Temperature: {{ convertFahrenheitToCelsius(activeItem?.Temperature.Maximum.Value) }}°</p>
+        </div>
+        <div class="col climate">
+          <h2>Climate</h2>
+          <p>Day: {{ activeItem?.Day.IconPhrase }}</p>
+          <p>Night: {{ activeItem?.Night.IconPhrase }}</p>
+          <a href="{{ activeItem?.Link }}" target="_blank">More</a>
+        </div>
+      </div>
+
+      <hr />
+      <ul class="list">
+        <li *ngFor="let item of data" (click)="onActive(item)" class="{{ item.Date == activeItem?.Date ? 'active' : '' }}">
+          <b>{{ formatDate(item.Date, 'dddd') }}</b>
+          <p>
+            <b>{{ convertFahrenheitToCelsius(item.Temperature.Minimum.Value) }}°</b> {{
+            convertFahrenheitToCelsius(item.Temperature.Maximum.Value) }}°
+          </p>
+        </li>
+      </ul>
+    </p-card>
+  </div>
+  <!-- </div>
+
+<div class="grid">
   <div class="col" *ngFor="let item of data">
-    <p-card header="{{ formatDate(item.Date) }}">
+    <p-card header="{{ formatDate(item.Date, 'dddd') }}">
       <p>Min: {{ convertFahrenheitToCelsius(item.Temperature.Minimum.Value) }}°C</p>
       <p>Max: {{ convertFahrenheitToCelsius(item.Temperature.Maximum.Value) }}°C</p>
-      </p-card>
+    </p-card>
   </div>
-</div>
+</div> -->
