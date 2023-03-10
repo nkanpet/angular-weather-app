@@ -1,0 +1,11 @@
+
+<link rel="stylesheet" href="https://unpkg.com/primeflex@^3/primeflex.css">
+
+<div class="grid">
+  <div class="col" *ngFor="let item of data">
+    <p-card header="{{ formatDate(item.Date) }}">
+      <p>Min: {{ convertFahrenheitToCelsius(item.Temperature.Minimum.Value) }}°C</p>
+      <p>Max: {{ convertFahrenheitToCelsius(item.Temperature.Maximum.Value) }}°C</p>
+      </p-card>
+  </div>
+</div>
