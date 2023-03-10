@@ -19,23 +19,15 @@
 
       <hr />
       <ul class="list">
-        <li *ngFor="let item of data" (click)="onActive(item)" class="{{ item.Date == activeItem?.Date ? 'active' : '' }}">
+        <li *ngFor="let item of data" (click)="onActive(item)"
+          class="{{ item.Date == activeItem?.Date ? 'active' : '' }}">
           <b>{{ formatDate(item.Date, 'dddd') }}</b>
           <p>
-            <b>{{ convertFahrenheitToCelsius(item.Temperature.Minimum.Value) }}°</b> {{
-            convertFahrenheitToCelsius(item.Temperature.Maximum.Value) }}°
+            <b>{{ convertFahrenheitToCelsius(item.Temperature.Maximum.Value) }}°</b> {{
+            convertFahrenheitToCelsius(item.Temperature.Minimum.Value) }}°
           </p>
         </li>
       </ul>
     </p-card>
   </div>
-  <!-- </div>
-
-<div class="grid">
-  <div class="col" *ngFor="let item of data">
-    <p-card header="{{ formatDate(item.Date, 'dddd') }}">
-      <p>Min: {{ convertFahrenheitToCelsius(item.Temperature.Minimum.Value) }}°C</p>
-      <p>Max: {{ convertFahrenheitToCelsius(item.Temperature.Maximum.Value) }}°C</p>
-    </p-card>
-  </div>
-</div> -->
+</div>
